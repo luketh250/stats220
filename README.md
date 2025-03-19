@@ -17,6 +17,8 @@ This is my repo for **STATS 220**.
 
 A website that I find interesting is [World wind map](https://earth.nullschool.net/)
 
+And here's [YouTube](https://www.youtube.com/) because why not...
+
 A meme that captures how I currently feel about my university studies is 
 ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
 
