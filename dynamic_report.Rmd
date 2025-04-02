@@ -1,0 +1,53 @@
+---
+title: "Coffee Consumption Tracker"
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+
+source("exploration.R")
+
+```
+
+```{css}
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+h2 { 
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+}
+.bar-plot { 
+  margin: 25px 0; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+```
+
+```markdown 
+## Daily Coffee Insights
+
+### Key Statistics
+- Average cups per day: `r round(mean(latest_data$Consumption), 1)`  
+- Max cups in a day: `r max(latest_data$Consumption)`  
+- Favorite coffee type: `r names(which.max(table(latest_data$Coffee_Type)))`  
+- Most common time: `r names(which.max(table(latest_data$Time)))`  
+
+### Visualisations
+```{r coffee-type-plot, fig.height=5}
+ggplot(latest_data, aes(x = Coffee_Type)) +
+  geom_bar(fill = "#56B4E9") +
+  labs(title = "Coffee Types Consumed", x = "", y = "Count")
+```
+
+```{r}
+ggplot(latest_data, aes(x = Time)) +
+  geom_bar(fill = "#E69F00") +
+  labs(title = "Drinking Times", x = "", y = "Count")
+
+```
+---
