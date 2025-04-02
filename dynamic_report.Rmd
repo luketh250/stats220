@@ -5,9 +5,16 @@ output: html_fragment
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 
-source("exploration.R")
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSbCQfDOjq1TezRYxvrjhgh-mHGBxIMu_WtLTYNVniB_hwlBWpztyV_3MIOphitr9WO-WFvcsuH1I9Q/pub?output=csv")
+
+latest_data <- logged_data %>%
+  rename(
+    Consumption = "How many cups of coffee did you drink today?",
+    Coffee_Type = "What was your primary type of coffee",
+    Time = "What time of day did you drink coffee?"
+  )
 
 ```
 
@@ -28,7 +35,7 @@ h2 {
 }
 ```
 
-```markdown 
+
 ## Daily Coffee Insights
 
 ### Key Statistics
@@ -48,6 +55,5 @@ ggplot(latest_data, aes(x = Coffee_Type)) +
 ggplot(latest_data, aes(x = Time)) +
   geom_bar(fill = "#E69F00") +
   labs(title = "Drinking Times", x = "", y = "Count")
-
 ```
 ---
